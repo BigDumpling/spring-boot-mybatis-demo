@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/world?zeroDateTimeBehavior=CONVERT_TO_NULL&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+
+
+mybatis:
+  mapper-locations: classpath:mybatis/**/*.xml
+  type-aliases-package: com.ligq.study.mybatis.springbootmybatisdemo.model
+logging:
+  path:

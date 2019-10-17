@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ligq.study.mybatis.demo.dao.PetMapper">
+  <resultMap id="BaseResultMap" type="com.ligq.study.mybatis.demo.model.Pet">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="owner" jdbcType="VARCHAR" property="owner" />
+    <result column="species" jdbcType="VARCHAR" property="species" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="birth" jdbcType="DATE" property="birth" />
+    <result column="death" jdbcType="DATE" property="death" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_timestamp" jdbcType="TIMESTAMP" property="createTimestamp" />
+  </resultMap>
+</mapper>

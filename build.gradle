@@ -1,0 +1,66 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.9.RELEASE")
+        classpath "gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:1.4"
+    }
+}
+
+group = 'com.ligq.study.mybatis'
+version = '0.0.1-SNAPSHOT'
+//sourceCompatibility = 1.8
+//targetCompatibility = 1.8
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "com.arenagod.gradle.MybatisGenerator"
+apply plugin: 'java-library'
+
+configurations {
+    mybatisGenerator
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+mybatisGenerator {
+    verbose = false
+    configFile = "src/main/resources/autogen/generatorConfig.xml"
+
+    dependencies {
+        mybatisGenerator "org.mybatis.generator:mybatis-generator-core:1.3.7"
+        mybatisGenerator "mysql:mysql-connector-java:8.0.17"
+        mybatisGenerator "tk.mybatis:mapper:4.1.5"
+    }
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation ("tk.mybatis:mapper-spring-boot-starter:2.1.5")
+    implementation ("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0")
+    implementation ("com.github.pagehelper:pagehelper-spring-boot-starter:1.2.12")
+    implementation ("com.alibaba:druid-spring-boot-starter:1.1.18")
+    implementation ("mysql:mysql-connector-java:8.0.17")
+    implementation("org.mybatis.generator:mybatis-generator-core:1.3.7")
+    implementation("tk.mybatis:mapper:4.1.5")
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation("junit:junit:4.12")
+}
