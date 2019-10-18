@@ -2,6 +2,7 @@ package com.ligq.study.mybatis.demo.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ligq.study.mybatis.demo.model.Pet;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface PetService {
 
     int updatePrimaryKeySelective(Pet pet);
 
-    int updateByParam(Pet pet, Pet cond);
+    int updateByParam(Pet pet, Example cond);
 
     int insertSelective(Pet pet);
 }

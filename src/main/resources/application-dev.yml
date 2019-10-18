@@ -5,9 +5,18 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/world?zeroDateTimeBehavior=CONVERT_TO_NULL&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
 
-
 mybatis:
   mapper-locations: classpath:mybatis/**/*.xml
   type-aliases-package: com.ligq.study.mybatis.springbootmybatisdemo.model
+
+mapper:
+  mappers: com.ligq.study.mybatis.demo.mapper.MyMapper
+  not-empty: true
+  identity: MYSQL
+  use-simple-type: true
+  check-example-entity-class: true
+  safe-delete: true
+
 logging:
-  path:
+  level: {com.ligq.study.mybatis.demo.service: info, com.ligq.study.mybatis.demo.dao: debug}
+

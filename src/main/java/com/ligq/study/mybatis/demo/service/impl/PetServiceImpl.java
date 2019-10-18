@@ -7,6 +7,7 @@ import com.ligq.study.mybatis.demo.model.Pet;
 import com.ligq.study.mybatis.demo.service.PetService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public int updateByParam(Pet pet, Pet cond) {
+    public int updateByParam(Pet pet, Example cond) {
         int i = petMapper.updateByExampleSelective(pet, cond);
         log.info("updateByParam result == {}", i);
         return i;
@@ -53,7 +54,7 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public int insertSelective(Pet pet) {
-        int i = petMapper.insertSelective(pet);
+        int i = petMapper.insertUseGeneratedKeys(pet);
         log.info("insertSelective result == {}", i);
         return i;
     }
