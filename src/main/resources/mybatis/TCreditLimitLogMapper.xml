@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ligq.study.mybatis.demo.dao.TCreditLimitLogMapper">
+    <resultMap id="BaseResultMap" type="com.ligq.study.mybatis.demo.model.TCreditLimitLog">
+        <id column="SEQ_ID" jdbcType="VARCHAR" property="seqId"/>
+        <result column="CREDIT_LIMIT_ID" jdbcType="VARCHAR" property="creditLimitId"/>
+        <result column="LESSEE_ID" jdbcType="VARCHAR" property="lesseeId"/>
+        <result column="PRODUCT_ID" jdbcType="VARCHAR" property="productId"/>
+        <result column="BIZ_ID" jdbcType="VARCHAR" property="bizId"/>
+        <result column="OP_TYPE" jdbcType="CHAR" property="opType"/>
+        <result column="OP_AMT" jdbcType="BIGINT" property="opAmt"/>
+        <result column="OLD_LIMIT_AMT" jdbcType="BIGINT" property="oldLimitAmt"/>
+        <result column="NEW_LIMIT_AMT" jdbcType="BIGINT" property="newLimitAmt"/>
+        <result column="DUE_DAY" jdbcType="BIGINT" property="dueDay"/>
+        <result column="CREATE_TIME" jdbcType="BIGINT" property="createTime"/>
+        <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser"/>
+        <result column="HANDLE_NUMBER" jdbcType="INTEGER" property="handleNumber"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    SEQ_ID, CREDIT_LIMIT_ID, LESSEE_ID, PRODUCT_ID, BIZ_ID, OP_TYPE, OP_AMT, OLD_LIMIT_AMT, 
+    NEW_LIMIT_AMT, DUE_DAY, CREATE_TIME, CREATE_USER, HANDLE_NUMBER
+  </sql>
+
+    <insert id="insertSelective" parameterType="com.ligq.study.mybatis.demo.model.TCreditLimitLog">
+        insert into t_credit_limit_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="seqId != null">
+                SEQ_ID,
+            </if>
+            <if test="creditLimitId != null">
+                CREDIT_LIMIT_ID,
+            </if>
+            <if test="lesseeId != null">
+                LESSEE_ID,
+            </if>
+            <if test="productId != null">
+                PRODUCT_ID,
+            </if>
+            <if test="bizId != null">
+                BIZ_ID,
+            </if>
+            <if test="opType != null">
+                OP_TYPE,
+            </if>
+            <if test="opAmt != null">
+                OP_AMT,
+            </if>
+            <if test="oldLimitAmt != null">
+                OLD_LIMIT_AMT,
+            </if>
+            <if test="newLimitAmt != null">
+                NEW_LIMIT_AMT,
+            </if>
+            <if test="dueDay != null">
+                DUE_DAY,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="createUser != null">
+                CREATE_USER,
+            </if>
+            <if test="handleNumber != null">
+                HANDLE_NUMBER,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="seqId != null">
+                #{seqId,jdbcType=VARCHAR},
+            </if>
+            <if test="creditLimitId != null">
+                #{creditLimitId,jdbcType=VARCHAR},
+            </if>
+            <if test="lesseeId != null">
+                #{lesseeId,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=VARCHAR},
+            </if>
+            <if test="bizId != null">
+                #{bizId,jdbcType=VARCHAR},
+            </if>
+            <if test="opType != null">
+                #{opType,jdbcType=CHAR},
+            </if>
+            <if test="opAmt != null">
+                #{opAmt,jdbcType=BIGINT},
+            </if>
+            <if test="oldLimitAmt != null">
+                #{oldLimitAmt,jdbcType=BIGINT},
+            </if>
+            <if test="newLimitAmt != null">
+                #{newLimitAmt,jdbcType=BIGINT},
+            </if>
+            <if test="dueDay != null">
+                #{dueDay,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="createUser != null">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="handleNumber != null">
+                #{handleNumber,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+</mapper>

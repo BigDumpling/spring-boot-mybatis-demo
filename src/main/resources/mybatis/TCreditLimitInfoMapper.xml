@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ligq.study.mybatis.demo.dao.TCreditLimitInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ligq.study.mybatis.demo.model.TCreditLimitInfo">
+    <id column="SEQ_ID" jdbcType="VARCHAR" property="seqId" />
+    <result column="LESSEE_ID" jdbcType="VARCHAR" property="lesseeId" />
+    <result column="CUSTOMER_ID" jdbcType="VARCHAR" property="customerId" />
+    <result column="ID_NO" jdbcType="VARCHAR" property="idNo" />
+    <result column="PRODUCT_ID" jdbcType="VARCHAR" property="productId" />
+    <result column="PRODUCT_CODE" jdbcType="VARCHAR" property="productCode" />
+    <result column="LIMIT_AMT" jdbcType="BIGINT" property="limitAmt" />
+    <result column="LOAN_LIMIT_AMT" jdbcType="BIGINT" property="loanLimitAmt" />
+    <result column="UNAVAILABLE_LIMIT_AMT" jdbcType="BIGINT" property="unavailableLimitAmt" />
+    <result column="DUE_DAY" jdbcType="DATE" property="dueDay" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+    <result column="INTEREST_TYPE" jdbcType="CHAR" property="interestType" />
+    <result column="FEE_RATE" jdbcType="DECIMAL" property="feeRate" />
+    <result column="REPAY_TYPE" jdbcType="VARCHAR" property="repayType" />
+    <result column="LOOP_FLAG" jdbcType="CHAR" property="loopFlag" />
+    <result column="CREATE_TIME" jdbcType="BIGINT" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="BIGINT" property="updateTime" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="OUT_BIZ_ID" jdbcType="VARCHAR" property="outBizId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    SEQ_ID, LESSEE_ID, CUSTOMER_ID, ID_NO, PRODUCT_ID, PRODUCT_CODE, LIMIT_AMT, LOAN_LIMIT_AMT, 
+    UNAVAILABLE_LIMIT_AMT, DUE_DAY, STATUS, INTEREST_TYPE, FEE_RATE, REPAY_TYPE, LOOP_FLAG, 
+    CREATE_TIME, UPDATE_TIME, CREATE_USER, UPDATE_USER, REMARK, OUT_BIZ_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_credit_limit_info
+    where SEQ_ID = #{seqId,jdbcType=VARCHAR}
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ligq.study.mybatis.demo.model.TCreditLimitInfo">
+    update t_credit_limit_info
+    <set>
+      <if test="lesseeId != null">
+        LESSEE_ID = #{lesseeId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="idNo != null">
+        ID_NO = #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        PRODUCT_ID = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="limitAmt != null">
+        LIMIT_AMT = #{limitAmt,jdbcType=BIGINT},
+      </if>
+      <if test="loanLimitAmt != null">
+        LOAN_LIMIT_AMT = #{loanLimitAmt,jdbcType=BIGINT},
+      </if>
+      <if test="unavailableLimitAmt != null">
+        UNAVAILABLE_LIMIT_AMT = #{unavailableLimitAmt,jdbcType=BIGINT},
+      </if>
+      <if test="dueDay != null">
+        DUE_DAY = #{dueDay,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="interestType != null">
+        INTEREST_TYPE = #{interestType,jdbcType=CHAR},
+      </if>
+      <if test="feeRate != null">
+        FEE_RATE = #{feeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="repayType != null">
+        REPAY_TYPE = #{repayType,jdbcType=VARCHAR},
+      </if>
+      <if test="loopFlag != null">
+        LOOP_FLAG = #{loopFlag,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="createUser != null">
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="outBizId != null">
+        OUT_BIZ_ID = #{outBizId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SEQ_ID = #{seqId,jdbcType=VARCHAR}
+  </update>
+</mapper>
